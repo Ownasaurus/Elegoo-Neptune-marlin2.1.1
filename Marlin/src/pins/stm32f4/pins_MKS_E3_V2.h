@@ -133,5 +133,12 @@
   #define SD_SPI_SPEED                      SPI_FULL_SPEED        
 #endif
 
+#ifdef MKS_WIFI_MODULE
+  #define WIFI_IO0_PIN                      PA0
+  #define WIFI_IO1_PIN                      PC15
+  #define WIFI_RESET_PIN                    PA1
+#endif
+
+
 // Ignore temp readings during development.
 //#define BOGUS_TEMPERATURE_GRACE_PERIOD    2000
