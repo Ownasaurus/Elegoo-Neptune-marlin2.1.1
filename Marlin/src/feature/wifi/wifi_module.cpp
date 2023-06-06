@@ -108,6 +108,9 @@ extern CLOUD_PARA cloud_para;
 extern bool once_flag, flash_preview_begin, default_preview_flg, gcode_preview_over;
 extern bool flash_dma_mode;
 
+uint8_t bmp_public_buf[14 * 1024];
+uint8_t public_buf[513];
+
 uint32_t getWifiTick() { return millis(); }
 
 uint32_t getWifiTickDiff(int32_t lastTick, int32_t curTick) {

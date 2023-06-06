@@ -61,6 +61,31 @@
 #define WIFI_IO1_SET()    WRITE(WIFI_IO1_PIN, HIGH);
 #define WIFI_IO1_RESET()  WRITE(WIFI_IO1_PIN, LOW);
 
+#define ESP_WIFI          0x02
+#define AP_MODEL          0x01
+#define STA_MODEL         0x02
+
+#define FILE_SYS_USB      0
+#define FILE_SYS_SD       1
+
+#define TICK_CYCLE 1
+
+enum {
+  IDLE,
+  WORKING,
+  PAUSING,
+  PAUSED,
+  REPRINTING,
+  REPRINTED,
+  RESUMING,
+  STOP
+};
+
+#define NUMBER_OF_PAGE 5
+
+#define WIFI_TOTAL_NUMBER 20
+#define WIFI_NAME_BUFFER_SIZE 33
+
 typedef enum {
   udisk_buf_empty = 0,
   udisk_buf_full,
