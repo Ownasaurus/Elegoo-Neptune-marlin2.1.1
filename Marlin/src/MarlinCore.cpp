@@ -256,6 +256,10 @@
   #include "lcd/extui/dgus/elegoo/DGUSDisplayDef.h"
 #endif
 
+#if ENABLED(MKS_WIFI_MODULE)
+  #include "feature/wifi/wifi_module.h"
+#endif
+
 PGMSTR(M112_KILL_STR, "M112 Shutdown");
 
 MarlinState marlin_state = MF_INITIALIZING;
