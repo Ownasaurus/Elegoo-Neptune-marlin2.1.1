@@ -25,6 +25,8 @@
   extern "C" {
 #endif
 
+#include <stdint.h>
+
 #define ESP_FIRMWARE_FILE         "MksWifi.bin"
 #define ESP_FIRMWARE_FILE_RENAME  "MKSWIFI.CUR"
 #define ESP_WEB_FIRMWARE_FILE     "1:/MksWifi_Web.bin"
