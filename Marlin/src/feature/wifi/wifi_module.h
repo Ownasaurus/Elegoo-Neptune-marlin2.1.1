@@ -56,6 +56,11 @@
 
 #define UDISKBUFLEN           1024
 
+#define WIFI_SET()        WRITE(WIFI_RESET_PIN, HIGH);
+#define WIFI_RESET()      WRITE(WIFI_RESET_PIN, LOW);
+#define WIFI_IO1_SET()    WRITE(WIFI_IO1_PIN, HIGH);
+#define WIFI_IO1_RESET()  WRITE(WIFI_IO1_PIN, LOW);
+
 typedef enum {
   udisk_buf_empty = 0,
   udisk_buf_full,

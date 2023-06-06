@@ -1643,6 +1643,11 @@ void setup() {
     SETUP_RUN(tft_lvgl_init());
   #endif
 
+  #if ENABLED(MKS_WIFI_MODULE)
+    SETUP_RUN(mks_esp_wifi_init());
+    SETUP_RUN(mks_wifi_firmware_update());
+  #endif
+
   #if BOTH(HAS_WIRED_LCD, SHOW_BOOTSCREEN)
     const millis_t elapsed = millis() - bootscreen_ms;
     #if ENABLED(MARLIN_DEV_MODE)
@@ -1709,6 +1714,8 @@ void loop() {
     endstops.event_handler();
 
     TERN_(HAS_TFT_LVGL_UI, printer_state_polling());
+
+    TERN_(MKS_WIFI_MODULE, wifi_looping());
 
     TERN_(MARLIN_TEST_BUILD, runPeriodicTests());
 
