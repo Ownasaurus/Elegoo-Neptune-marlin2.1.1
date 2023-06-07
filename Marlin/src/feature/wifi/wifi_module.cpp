@@ -963,7 +963,7 @@ static void wifi_gcode_exec(uint8_t *cmd_line) {
               //clear_cur_ui();
               //reset_print_time();
               //start_print_time();
-              preview_gcode_prehandle(list_file.file_name[sel_id]);
+              //preview_gcode_prehandle(list_file.file_name[sel_id]);
               uiCfg.print_state = WORKING;
               //lv_draw_printing();
 
@@ -979,7 +979,9 @@ static void wifi_gcode_exec(uint8_t *cmd_line) {
                   if (file.open(curDir, fname, O_READ)) {
                     gCfgItems.curFilesize = file.fileSize();
                     file.close();
-                    update_spi_flash();
+                    #if HAS_SPI_FLASH
+                      update_spi_flash();
+                    #endif
                   }
                   card.openFileRead(cur_name);
                   if (card.isFileOpen()) {
@@ -1362,7 +1364,7 @@ static void wifi_list_msg_handle(uint8_t * msg, uint16_t msgLen) {
   int8_t valid_name_num;
 
   if (msgLen <= 0) return;
-  if (disp_state == KEYBOARD_UI) return;
+  //if (disp_state == KEYBOARD_UI) return;
 
   wifi_list.getNameNum = msg[0];
 
@@ -1408,7 +1410,7 @@ static void wifi_list_msg_handle(uint8_t * msg, uint16_t msgLen) {
     wifi_list.getPage = wifi_list.getNameNum / NUMBER_OF_PAGE + ((wifi_list.getNameNum % NUMBER_OF_PAGE) != 0);
     wifi_list.nameIndex = 0;
 
-    if (disp_state == WIFI_LIST_UI) disp_wifi_list();
+    //f (disp_state == WIFI_LIST_UI) disp_wifi_list();
   }
 }
 
@@ -1772,7 +1774,9 @@ void stopEspTransfer() {
   esp_port_begin(1);
   wifi_delay(200);
 
-  W25QXX.init(SPI_QUARTER_SPEED);
+  #if HAS_SPI_FLASH
+    W25QXX.init(SPI_QUARTER_SPEED);
+  #endif
 
   TERN_(HAS_TFT_LVGL_UI_SPI, SPI_TFT.spi_init(SPI_FULL_SPEED));
   TERN_(HAS_SERVOS, servo_init());
