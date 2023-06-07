@@ -226,6 +226,66 @@ int usartFifoAvailable(SZ_USART_FIFO *fifo);
 int readUsartFifo(SZ_USART_FIFO *fifo, int8_t *buf, int32_t len);
 void esp_port_begin(uint8_t interrupt);
 
+typedef struct {
+  int16_t days;
+  uint16_t hours;
+  uint8_t minutes;
+  volatile int8_t seconds;
+  int8_t ms_10;
+  int8_t start;
+} WIFI_PRINT_TIME;
+extern WIFI_PRINT_TIME print_time;
+
+typedef struct UI_Config_Struct {
+
+  uint8_t wifi_name[32];
+  uint8_t wifi_key[64];
+  uint8_t cloud_hostUrl[96];
+  uint16_t cloud_port;
+  uint8_t print_state;
+  uint32_t totalSend;
+  bool configWifi;
+  bool command_send;
+
+} UI_CFG;
+
+typedef struct {
+  uint8_t   wifi_mode_sel;
+  uint8_t   wifi_type;
+  bool      cloud_enable;
+  uint8_t   fileSysType;
+  uint32_t  curFilesize;
+  bool      from_flash_pic;
+} WIFI_CFG_ITMES;
+
+#define FILE_NUM 6
+#define SHORT_NAME_LEN 13
+#define NAME_CUT_LEN 23
+
+#define MAX_DIR_LEVEL  10
+
+typedef struct {
+  char file_name[FILE_NUM][SHORT_NAME_LEN * MAX_DIR_LEVEL + 1];
+  char curDirPath[SHORT_NAME_LEN * MAX_DIR_LEVEL + 1];
+  char long_name[FILE_NUM][SHORT_NAME_LEN * 2 + 1];
+  bool IsFolder[FILE_NUM];
+  char Sd_file_cnt;
+  char sd_file_index;
+  char Sd_file_offset;
+} WIFI_LIST_FILE;
+extern WIFI_LIST_FILE list_file;
+
+typedef struct {
+  int8_t getNameNum;
+  int8_t nameIndex;
+  int8_t currentWifipage;
+  int8_t getPage;
+  int8_t RSSI[WIFI_TOTAL_NUMBER];
+  uint8_t wifiName[WIFI_TOTAL_NUMBER][WIFI_NAME_BUFFER_SIZE];
+  uint8_t wifiConnectedName[WIFI_NAME_BUFFER_SIZE];
+} WIFI_WIFI_LIST;
+extern WIFI_WIFI_LIST wifi_list;
+
 #ifdef __cplusplus
   } /* C-declarations for C++ */
 #endif

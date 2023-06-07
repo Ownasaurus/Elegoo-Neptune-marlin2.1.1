@@ -61,7 +61,11 @@ volatile SZ_USART_FIFO WifiRxFifo;
 
 int cfg_cloud_flag = 0;
 
-extern PRINT_TIME print_time;
+WIFI_PRINT_TIME print_time;
+UI_CFG uiCfg;
+WIFI_CFG_ITMES gCfgItems;
+WIFI_WIFI_LIST wifi_list;
+WIFI_LIST_FILE list_file;
 
 char wifi_firm_ver[20] = { 0 };
 WIFI_GCODE_BUFFER espGcodeFifo;
@@ -1900,6 +1904,52 @@ void mks_esp_wifi_init() {
   esp_port_begin(1);
   hal.watchdog_refresh();
   wifi_reset();
+
+  // clear config items
+  memset(&print_time, 0, sizeof(print_time));
+  memset(&list_file, 0, sizeof(print_time));
+  memset(&uiCfg, 0, sizeof(print_time));
+  memset(&gCfgItems, 0, sizeof(print_time));
+  memset(&wifiPara, 0, sizeof(wifiPara));
+  memset(&ipPara, 0, sizeof(ipPara));
+
+  //set up some dummy defaults
+  print_time.seconds = 1;
+
+  gCfgItems.from_flash_pic    = false;
+  gCfgItems.curFilesize       = 0;
+  gCfgItems.cloud_enable      = false;
+  gCfgItems.wifi_mode_sel = STA_MODEL;
+  gCfgItems.fileSysType   = FILE_SYS_SD;
+  gCfgItems.wifi_type     = ESP_WIFI;
+
+  uiCfg.command_send        = false;
+
+
+  strcpy_P(wifiPara.ap_name, PSTR(WIFI_AP_NAME));
+  strcpy_P(wifiPara.keyCode, PSTR(WIFI_KEY_CODE));
+  strcpy_P(ipPara.ip_addr, PSTR(IP_ADDR));
+  strcpy_P(ipPara.mask, PSTR(IP_MASK));
+  strcpy_P(ipPara.gate, PSTR(IP_GATE));
+  strcpy_P(ipPara.dns, PSTR(IP_DNS));
+
+  ipPara.dhcp_flag = IP_DHCP_FLAG;
+
+  // AP
+  strcpy_P(ipPara.dhcpd_ip, PSTR(AP_IP_ADDR));
+  strcpy_P(ipPara.dhcpd_mask, PSTR(AP_IP_MASK));
+  strcpy_P(ipPara.dhcpd_gate, PSTR(AP_IP_GATE));
+  strcpy_P(ipPara.dhcpd_dns, PSTR(AP_IP_DNS));
+  strcpy_P(ipPara.start_ip_addr, PSTR(IP_START_IP));
+  strcpy_P(ipPara.end_ip_addr, PSTR(IP_END_IP));
+
+  ipPara.dhcpd_flag = AP_IP_DHCP_FLAG;
+
+  strcpy_P((char*)uiCfg.cloud_hostUrl, PSTR("baizhongyun.cn"));
+  uiCfg.cloud_port = 10086;
+
+
+  // etc...
 
   #if 0
   if (update_flag == 0) {

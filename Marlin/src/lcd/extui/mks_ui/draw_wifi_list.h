@@ -25,6 +25,7 @@
   extern "C" {
 #endif
 
+#include <stdint.h>
 void lv_draw_wifi_list();
 void lv_clear_wifi_list();
 void disp_wifi_list();
