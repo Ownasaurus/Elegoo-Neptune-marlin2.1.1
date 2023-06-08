@@ -1907,9 +1907,9 @@ void mks_esp_wifi_init() {
 
   // clear config items
   memset(&print_time, 0, sizeof(print_time));
-  memset(&list_file, 0, sizeof(print_time));
-  memset(&uiCfg, 0, sizeof(print_time));
-  memset(&gCfgItems, 0, sizeof(print_time));
+  memset(&list_file, 0, sizeof(list_file));
+  memset(&uiCfg, 0, sizeof(uiCfg));
+  memset(&gCfgItems, 0, sizeof(gCfgItems));
   memset(&wifiPara, 0, sizeof(wifiPara));
   memset(&ipPara, 0, sizeof(ipPara));
 
