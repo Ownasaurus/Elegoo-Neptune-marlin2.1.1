@@ -21,6 +21,9 @@
  */
 #pragma once
 
+#define WIFI_USART USART1
+#define WIFI_USART_BASE USART1_BASE
+
 #include <libmaple/libmaple_types.h>
 #include <libmaple/usart.h>
 #include <libmaple/libmaple.h>

@@ -22,6 +22,7 @@
 #pragma once
 
 #define WIFI_USART USART2
+#define WIFI_USART_BASE USART2_BASE
 
 #include <inttypes.h>
 #include "Stream.h"

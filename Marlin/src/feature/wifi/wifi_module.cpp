@@ -249,7 +249,7 @@ static bool longName2DosName(const char *longName, char *dosName) {
     dma_init(DMA1);
     uint32_t flags = ( DMA_MINC_MODE | DMA_TRNS_CMPLT | DMA_HALF_TRNS | DMA_TRNS_ERR);
     dma_xfer_size dma_bit_size = DMA_SIZE_8BITS;
-    dma_setup_transfer(DMA1, DMA_CH5, &USART1_BASE->DR, dma_bit_size,
+    dma_setup_transfer(DMA1, DMA_CH5, &WIFI_USART_BASE->DR, dma_bit_size,
                (volatile void*)WIFISERIAL.usart_device->rb->buf, dma_bit_size, flags);// Transmit buffer DMA
     dma_set_priority(DMA1, DMA_CH5, DMA_PRIORITY_LOW);
     dma_attach_interrupt(DMA1, DMA_CH5, &dma_ch5_irq_handle);
@@ -257,7 +257,7 @@ static bool longName2DosName(const char *longName, char *dosName) {
     dma_clear_isr_bits(DMA1, DMA_CH5);
     dma_set_num_transfers(DMA1, DMA_CH5, UART_RX_BUFFER_SIZE);
 
-    bb_peri_set_bit(&USART1_BASE->CR3, USART_CR3_DMAR_BIT, 1);
+    bb_peri_set_bit(&WIFI_USART_BASE->CR3, USART_CR3_DMAR_BIT, 1);
     dma_enable(DMA1, DMA_CH5);   // enable transmit
 
     for (uint8_t i = 0; i < TRANS_RCV_FIFO_BLOCK_NUM; i++) {
@@ -473,12 +473,12 @@ static bool longName2DosName(const char *longName, char *dosName) {
     if (HAL_DMA_Init((DMA_HandleTypeDef *)&wifiUsartDMArx) != HAL_OK)
       Error_Handler();
 
-    if (HAL_DMA_Start(&wifiUsartDMArx, (uint32_t)&(USART1->DR), (uint32_t)WIFISERIAL.wifiRxBuf, UART_RX_BUFFER_SIZE))
+    if (HAL_DMA_Start(&wifiUsartDMArx, (uint32_t)&(WIFI_USART->DR), (uint32_t)WIFISERIAL.wifiRxBuf, UART_RX_BUFFER_SIZE))
       Error_Handler();
 
-    USART1->CR1 |= USART_CR1_UE;
+    WIFI_USART->CR1 |= USART_CR1_UE;
 
-    SET_BIT(USART1->CR3, USART_CR3_DMAR);
+    SET_BIT(WIFI_USART->CR3, USART_CR3_DMAR);
     WIFI_IO1_RESET();
   }
 
@@ -521,12 +521,12 @@ static bool longName2DosName(const char *longName, char *dosName) {
     if (HAL_DMA_Init((DMA_HandleTypeDef *)&wifiUsartDMArx) != HAL_OK)
       Error_Handler();
 
-    if (HAL_DMA_Start(&wifiUsartDMArx, (uint32_t)&(USART1->DR), (uint32_t)WIFISERIAL.wifiRxBuf, UART_RX_BUFFER_SIZE))
+    if (HAL_DMA_Start(&wifiUsartDMArx, (uint32_t)&(WIFI_USART->DR), (uint32_t)WIFISERIAL.wifiRxBuf, UART_RX_BUFFER_SIZE))
       Error_Handler();
 
-    USART1->CR1 |= USART_CR1_UE;
+    WIFI_USART->CR1 |= USART_CR1_UE;
 
-    SET_BIT(USART1->CR3, USART_CR3_DMAR);   // Enable Rx DMA Request
+    SET_BIT(WIFI_USART->CR3, USART_CR3_DMAR);   // Enable Rx DMA Request
 
     for (uint8_t i = 0; i < TRANS_RCV_FIFO_BLOCK_NUM; i++) {
       wifiDmaRcvFifo.bufferAddr[i] = &bmp_public_buf[1024 * i];
@@ -552,7 +552,7 @@ static bool longName2DosName(const char *longName, char *dosName) {
       }
       else {
         WIFISERIAL.end();
-        USART1->CR1 &= ~USART_CR1_RXNEIE;
+        WIFI_USART->CR1 &= ~USART_CR1_RXNEIE;
         WIFISERIAL.begin(WIFI_UPLOAD_BAUDRATE);
         wifi_usart_dma_init();
       }
@@ -1764,7 +1764,7 @@ void stopEspTransfer() {
   // disable dma
   #ifdef __STM32F1__
     dma_clear_isr_bits(DMA1, DMA_CH5);
-    bb_peri_set_bit(&USART1_BASE->CR3, USART_CR3_DMAR_BIT, 0);
+    bb_peri_set_bit(&WIFI_USART_BASE->CR3, USART_CR3_DMAR_BIT, 0);
     dma_disable(DMA1, DMA_CH5);
   #else
     // First, abort any running dma
