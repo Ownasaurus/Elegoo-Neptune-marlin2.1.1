@@ -52,7 +52,7 @@
 extern uint8_t Explore_Disk(char *path, uint8_t recu_level);
 
 extern uint8_t commands_in_queue;
-extern uint8_t sel_id;
+uint8_t sel_id = 0;
 extern unsigned int getTickDiff(unsigned int curTick, unsigned int lastTick);
 
 volatile SZ_USART_FIFO WifiRxFifo;
@@ -109,8 +109,8 @@ extern WIFI_PARA wifiPara;
 extern IP_PARA ipPara;
 extern CLOUD_PARA cloud_para;
 
-extern bool once_flag, flash_preview_begin, default_preview_flg, gcode_preview_over;
-extern bool flash_dma_mode;
+bool once_flag = false, flash_preview_begin = false, default_preview_flg = false, gcode_preview_over = false;
+bool flash_dma_mode = true;
 
 uint8_t bmp_public_buf[14 * 1024];
 uint8_t public_buf[513];
