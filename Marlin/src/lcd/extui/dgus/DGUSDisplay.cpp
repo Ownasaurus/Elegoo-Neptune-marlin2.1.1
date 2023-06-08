@@ -69,7 +69,7 @@ void DGUSDisplay::InitDisplay() {
   #ifndef LCD_BAUDRATE
     #define LCD_BAUDRATE 115200
   #endif
-  LCD_SERIAL.begin(LCD_BAUDRATE);
+  //LCD_SERIAL.begin(LCD_BAUDRATE);
 
   if (TERN1(POWER_LOSS_RECOVERY, !recovery.valid())) {  // If no Power-Loss Recovery is needed...
     TERN_(DGUS_LCD_UI_MKS, delay(LOGO_TIME_DELAY));     // Show the logo for a little while
@@ -94,7 +94,7 @@ void DGUSDisplay::WriteVariable(uint16_t adr, const void *values, uint8_t values
       strend = true;
       x = ' ';
     }
-    LCD_SERIAL.write(x);
+    //LCD_SERIAL.write(x);
   }
 }
 
@@ -138,7 +138,7 @@ void DGUSDisplay::WriteVariablePGM(uint16_t adr, const void *values, uint8_t val
       strend = true;
       x = ' ';
     }
-    LCD_SERIAL.write(x);
+    //LCD_SERIAL.write(x);
   }
 }
 
@@ -154,6 +154,7 @@ void DGUSDisplay::WriteVariablePGM(uint16_t adr, const void *values, uint8_t val
 void DGUSDisplay::ProcessRx() {
 
   #if ENABLED(SERIAL_STATS_RX_BUFFER_OVERRUNS)
+  /*
     if (!LCD_SERIAL.available() && LCD_SERIAL.buffer_overruns()) {
       // Overrun, but reset the flag only when the buffer is empty
       // We want to extract as many as valid datagrams possible...
@@ -162,10 +163,11 @@ void DGUSDisplay::ProcessRx() {
       //LCD_SERIAL.reset_rx_overun();
       LCD_SERIAL.flush();
     }
+  */
   #endif
 
   uint8_t receivedbyte;
-  while (LCD_SERIAL.available()) {
+  /*while (LCD_SERIAL.available()) {
     switch (rx_datagram_state) {
 
       case DGUS_IDLE: // Waiting for the first header byte
@@ -211,7 +213,7 @@ void DGUSDisplay::ProcessRx() {
           rx_datagram_state = DGUS_IDLE;
           break;
         }
-
+        */
         /* AutoUpload, (and answer to) Command 0x83 :
         |      tmp[0  1  2  3  4 ... ]
         | Example 5A A5 06 83 20 01 01 78 01 ……
@@ -219,6 +221,7 @@ void DGUSDisplay::ProcessRx() {
         |        Header |  |    |    |   \_____\_ DATA (Words!)
         |     DatagramLen  /  VPAdr  |
         |           Command          DataLen (in Words) */
+        /*
         if (command == DGUS_CMD_READVAR) {
           const uint16_t vp = tmp[0] << 8 | tmp[1];
           //const uint8_t dlen = tmp[2] << 1;  // Convert to Bytes. (Display works with words)
@@ -240,7 +243,7 @@ void DGUSDisplay::ProcessRx() {
       // discard anything else
       rx_datagram_state = DGUS_IDLE;
     }
-  }
+  }*/
 
   if(LCD_SERIAL_2.available())
   {
@@ -371,19 +374,19 @@ void DGUSDisplay::ProcessRx() {
 
 }
 
-size_t DGUSDisplay::GetFreeTxBuffer() { return SERIAL_GET_TX_BUFFER_FREE(); }
+size_t DGUSDisplay::GetFreeTxBuffer() { return SERIAL2_GET_TX_BUFFER_FREE(); }
 
 void DGUSDisplay::WriteHeader(uint16_t adr, uint8_t cmd, uint8_t payloadlen) {
-  LCD_SERIAL.write(DGUS_HEADER1);
-  LCD_SERIAL.write(DGUS_HEADER2);
-  LCD_SERIAL.write(payloadlen + 3);
-  LCD_SERIAL.write(cmd);
-  LCD_SERIAL.write(adr >> 8);
-  LCD_SERIAL.write(adr & 0xFF);
+  //LCD_SERIAL.write(DGUS_HEADER1);
+  //LCD_SERIAL.write(DGUS_HEADER2);
+  //LCD_SERIAL.write(payloadlen + 3);
+  //LCD_SERIAL.write(cmd);
+  //LCD_SERIAL.write(adr >> 8);
+  //LCD_SERIAL.write(adr & 0xFF);
 }
 
 void DGUSDisplay::WritePGM(const char str[], uint8_t len) {
-  while (len--) LCD_SERIAL.write(pgm_read_byte(str++));
+  //while (len--) LCD_SERIAL.write(pgm_read_byte(str++));
 }
 
 void DGUSDisplay::loop() {
