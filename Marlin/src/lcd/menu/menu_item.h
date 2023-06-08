@@ -226,7 +226,7 @@ class MenuItem_bool : public MenuEditItemBase {
 #define SCREEN_OR_MENU_LOOP(IS_MENU)                    \
   scroll_screen(IS_MENU ? 1 : LCD_HEIGHT, IS_MENU);     \
   int8_t _menuLineNr = encoderTopLine, _thisItemNr = 0; \
-  bool _skipStatic = IS_MENU; UNUSED(_thisItemNr);      \
+  bool _skipStatic = IS_MENU; MARLIN_UNUSED(_thisItemNr);      \
   for (int8_t _lcdLineNr = 0; _lcdLineNr < LCD_HEIGHT; _lcdLineNr++, _menuLineNr++) { \
     _thisItemNr = 0
 
@@ -242,7 +242,7 @@ class MenuItem_bool : public MenuEditItemBase {
 #define NEXT_ITEM() (++_thisItemNr)
 #define SKIP_ITEM() NEXT_ITEM()
 #define END_SCREEN() } screen_items = _thisItemNr
-#define END_MENU() END_SCREEN(); UNUSED(_skipStatic)
+#define END_MENU() END_SCREEN(); MARLIN_UNUSED(_skipStatic)
 
 /**
  * MENU_ITEM generates draw & handler code for a menu item, potentially calling:

@@ -284,7 +284,7 @@ void PrintJobRecovery::save(const bool force/*=false*/, const float zraise/*=POW
             gcode.process_subcommands_now(cmd);
           }
         #else
-          UNUSED(zraise);
+          MARLIN_UNUSED(zraise);
         #endif
 
         //gcode.axis_relative = info.axis_relative;

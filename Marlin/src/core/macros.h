@@ -90,8 +90,8 @@
 
 #define IS_CONSTEXPR(...) __builtin_constant_p(__VA_ARGS__) // Only valid solution with C++14. Should use std::is_constant_evaluated() in C++20 instead
 
-#ifndef UNUSED
-  #define UNUSED(x) ((void)(x))
+#ifndef MARLIN_UNUSED
+  #define MARLIN_UNUSED(x) ((void)(x))
 #endif
 
 // Clock speed factors

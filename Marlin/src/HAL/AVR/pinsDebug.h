@@ -347,7 +347,7 @@ static void pwm_details(uint8_t pin) {
       #endif
     }
   #else
-    UNUSED(print_is_also_tied);
+    MARLIN_UNUSED(print_is_also_tied);
   #endif
 } // pwm_details
 

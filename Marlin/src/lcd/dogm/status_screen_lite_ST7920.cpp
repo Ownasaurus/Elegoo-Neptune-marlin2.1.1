@@ -614,7 +614,7 @@ void ST7920_Lite_Status_Screen::draw_feedrate_percentage(const uint16_t percenta
     write_number(percentage, 3);
     write_byte('%');
   #else
-    UNUSED(percentage);
+    MARLIN_UNUSED(percentage);
   #endif
 }
 
@@ -855,7 +855,7 @@ void ST7920_Lite_Status_Screen::update_progress(const bool forceUpdate) {
 
   #else
 
-    UNUSED(forceUpdate);
+    MARLIN_UNUSED(forceUpdate);
 
   #endif
 }

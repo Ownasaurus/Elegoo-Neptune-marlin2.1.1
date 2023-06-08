@@ -31,7 +31,7 @@
 #undef SBI            // Redefined by arduino/const_functions.h
 #undef CBI            // Redefined by arduino/const_functions.h
 #undef sq             // Redefined by teensy3/wiring.h
-#undef UNUSED         // Redefined by stm32f4xx_hal_def.h
+//#undef UNUSED         // Redefined by stm32f4xx_hal_def.h
 
 #include <Arduino.h>  // NOTE: If included earlier then this line is a NOOP
 
@@ -78,8 +78,8 @@
 #endif
 
 // Remove compiler warning on an unused variable
-#ifndef UNUSED
-  #define UNUSED(x) ((void)(x))
+#ifndef MARLIN_UNUSED
+  #define MARLIN_UNUSED(x) ((void)(x))
 #endif
 
 #ifndef FORCE_INLINE

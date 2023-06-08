@@ -315,11 +315,11 @@
   #define EITHER(V1,V2)       ANY(V1,V2)
 
   // Remove compiler warning on an unused variable
-  #ifndef UNUSED
+  #ifndef MARLIN_UNUSED
     #ifdef HAL_STM32
-      #define UNUSED(X) (void)X
+      #define MARLIN_UNUSED(X) (void)X
     #else
-      #define UNUSED(x) ((void)(x))
+      #define MARLIN_UNUSED(x) ((void)(x))
     #endif
   #endif
 

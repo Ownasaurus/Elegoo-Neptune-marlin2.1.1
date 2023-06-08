@@ -78,7 +78,7 @@ void DGUSRxHandler::ScreenChange(DGUS_VP &vp, void *data_ptr) {
 
 #if ENABLED(SDSUPPORT)
   void DGUSRxHandler::Scroll(DGUS_VP &vp, void *data_ptr) {
-    UNUSED(vp);
+    MARLIN_UNUSED(vp);
 
     const DGUS_Data::Scroll scroll = (DGUS_Data::Scroll)((uint8_t*)data_ptr)[1];
 
@@ -112,7 +112,7 @@ void DGUSRxHandler::ScreenChange(DGUS_VP &vp, void *data_ptr) {
   }
 
   void DGUSRxHandler::SelectFile(DGUS_VP &vp, void *data_ptr) {
-    UNUSED(vp);
+    MARLIN_UNUSED(vp);
 
     const uint8_t index = ((uint8_t*)data_ptr)[1];
 
@@ -133,8 +133,8 @@ void DGUSRxHandler::ScreenChange(DGUS_VP &vp, void *data_ptr) {
   }
 
   void DGUSRxHandler::PrintFile(DGUS_VP &vp, void *data_ptr) {
-    UNUSED(vp);
-    UNUSED(data_ptr);
+    MARLIN_UNUSED(vp);
+    MARLIN_UNUSED(data_ptr);
 
     if (dgus_screen_handler.filelist_selected < 0) {
       dgus_screen_handler.SetStatusMessage(F("No file selected"));
@@ -157,7 +157,7 @@ void DGUSRxHandler::ScreenChange(DGUS_VP &vp, void *data_ptr) {
 #endif // SDSUPPORT
 
 void DGUSRxHandler::PrintAbort(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -174,7 +174,7 @@ void DGUSRxHandler::PrintAbort(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::PrintPause(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -191,7 +191,7 @@ void DGUSRxHandler::PrintPause(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::PrintResume(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -213,7 +213,7 @@ void DGUSRxHandler::PrintResume(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Feedrate(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const int16_t feedrate = Swap16(*(int16_t*)data_ptr);
 
@@ -244,7 +244,7 @@ void DGUSRxHandler::Flowrate(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::BabystepSet(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const int16_t data = Swap16(*(int16_t*)data_ptr);
   const float offset = dgus_display.FromFixedPoint<int16_t, float, 2>(data);
@@ -258,7 +258,7 @@ void DGUSRxHandler::BabystepSet(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Babystep(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Adjust adjust = (DGUS_Data::Adjust)((uint8_t*)data_ptr)[1];
   int16_t steps;
@@ -280,7 +280,7 @@ void DGUSRxHandler::Babystep(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::TempPreset(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::TempPreset preset = (DGUS_Data::TempPreset)((uint8_t*)data_ptr)[1];
 
@@ -336,7 +336,7 @@ void DGUSRxHandler::TempTarget(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::TempCool(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Heater heater = (DGUS_Data::Heater)Swap16(*(uint16_t*)data_ptr);
 
@@ -368,7 +368,7 @@ void DGUSRxHandler::TempCool(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Steppers(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Control control = (DGUS_Data::Control)((uint8_t*)data_ptr)[1];
 
@@ -385,7 +385,7 @@ void DGUSRxHandler::Steppers(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::ZOffset(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   if (!ExtUI::isAxisPositionKnown(ExtUI::Z)) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_HOMING_REQUIRED));
@@ -409,7 +409,7 @@ void DGUSRxHandler::ZOffset(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::ZOffsetStep(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   if (!ExtUI::isAxisPositionKnown(ExtUI::Z)) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_HOMING_REQUIRED));
@@ -441,7 +441,7 @@ void DGUSRxHandler::ZOffsetStep(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::ZOffsetSetStep(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::StepSize size = (DGUS_Data::StepSize)((uint8_t*)data_ptr)[1];
 
@@ -451,7 +451,7 @@ void DGUSRxHandler::ZOffsetSetStep(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::MoveToPoint(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   if (!ExtUI::isPositionKnown()) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_HOMING_REQUIRED));
@@ -500,8 +500,8 @@ void DGUSRxHandler::MoveToPoint(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Probe(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   #if ENABLED(MESH_BED_LEVELING)
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_ABL_REQUIRED));
@@ -529,8 +529,8 @@ void DGUSRxHandler::Probe(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::DisableABL(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   if (!dgus_screen_handler.IsPrinterIdle()) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_BUSY));
@@ -544,7 +544,7 @@ void DGUSRxHandler::DisableABL(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::FilamentSelect(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Extruder extruder = (DGUS_Data::Extruder)Swap16(*(uint16_t*)data_ptr);
 
@@ -561,7 +561,7 @@ void DGUSRxHandler::FilamentSelect(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::FilamentLength(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const uint16_t length = Swap16(*(uint16_t*)data_ptr);
 
@@ -571,7 +571,7 @@ void DGUSRxHandler::FilamentLength(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::FilamentMove(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   if (!dgus_screen_handler.IsPrinterIdle()) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_BUSY));
@@ -615,7 +615,7 @@ void DGUSRxHandler::FilamentMove(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Home(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   if (!dgus_screen_handler.IsPrinterIdle()) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_BUSY));
@@ -672,7 +672,7 @@ void DGUSRxHandler::Move(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::MoveStep(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   float offset;
 
@@ -728,7 +728,7 @@ void DGUSRxHandler::MoveStep(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::MoveSetStep(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::StepSize size = (DGUS_Data::StepSize)((uint8_t*)data_ptr)[1];
 
@@ -738,8 +738,8 @@ void DGUSRxHandler::MoveSetStep(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::GcodeClear(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   ZERO(dgus_screen_handler.gcode);
 
@@ -747,8 +747,8 @@ void DGUSRxHandler::GcodeClear(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::GcodeExecute(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   if (!strlen(dgus_screen_handler.gcode)) {
     return;
@@ -769,7 +769,7 @@ void DGUSRxHandler::GcodeExecute(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::ResetEEPROM(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -787,7 +787,7 @@ void DGUSRxHandler::ResetEEPROM(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::SettingsExtra(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Extra extra = (DGUS_Data::Extra)((uint8_t*)data_ptr)[1];
 
@@ -814,7 +814,7 @@ void DGUSRxHandler::SettingsExtra(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::PIDSelect(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Heater heater = (DGUS_Data::Heater)Swap16(*(uint16_t*)data_ptr);
 
@@ -839,7 +839,7 @@ void DGUSRxHandler::PIDSelect(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::PIDSetTemp(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   if (!dgus_screen_handler.IsPrinterIdle()) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_BUSY));
@@ -869,8 +869,8 @@ void DGUSRxHandler::PIDSetTemp(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::PIDRun(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   if (!dgus_screen_handler.IsPrinterIdle()) {
     dgus_screen_handler.SetStatusMessage(FPSTR(DGUS_MSG_BUSY));
@@ -925,7 +925,7 @@ void DGUSRxHandler::PIDRun(DGUS_VP &vp, void *data_ptr) {
 
 #if ENABLED(POWER_LOSS_RECOVERY)
   void DGUSRxHandler::PowerLossAbort(DGUS_VP &vp, void *data_ptr) {
-    UNUSED(vp);
+    MARLIN_UNUSED(vp);
 
     const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -944,7 +944,7 @@ void DGUSRxHandler::PIDRun(DGUS_VP &vp, void *data_ptr) {
   }
 
   void DGUSRxHandler::PowerLossResume(DGUS_VP &vp, void *data_ptr) {
-    UNUSED(vp);
+    MARLIN_UNUSED(vp);
 
     const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -969,7 +969,7 @@ void DGUSRxHandler::PIDRun(DGUS_VP &vp, void *data_ptr) {
 #endif // POWER_LOSS_RECOVERY
 
 void DGUSRxHandler::WaitAbort(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   const DGUS_Data::Popup result = (DGUS_Data::Popup)((uint8_t*)data_ptr)[1];
 
@@ -988,8 +988,8 @@ void DGUSRxHandler::WaitAbort(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::WaitContinue(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   ExtUI::setUserConfirmed();
 
@@ -1007,7 +1007,7 @@ void DGUSRxHandler::FanSpeed(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Volume(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   uint8_t volume = ((uint8_t*)data_ptr)[1];
   dgus_display.SetVolume(volume);
@@ -1016,7 +1016,7 @@ void DGUSRxHandler::Volume(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Brightness(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
+  MARLIN_UNUSED(vp);
 
   uint8_t brightness = ((uint8_t*)data_ptr)[1];
   dgus_display.SetBrightness(brightness);
@@ -1025,8 +1025,8 @@ void DGUSRxHandler::Brightness(DGUS_VP &vp, void *data_ptr) {
 }
 
 void DGUSRxHandler::Debug(DGUS_VP &vp, void *data_ptr) {
-  UNUSED(vp);
-  UNUSED(data_ptr);
+  MARLIN_UNUSED(vp);
+  MARLIN_UNUSED(data_ptr);
 
   ++dgus_screen_handler.debug_count;
 

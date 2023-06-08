@@ -50,7 +50,7 @@ inline void plr_error(FSTR_P const prefix) {
     DEBUG_ECHOF(prefix);
     DEBUG_ECHOLNPGM(" Job Recovery Data");
   #else
-    UNUSED(prefix);
+    MARLIN_UNUSED(prefix);
   #endif
 }
 

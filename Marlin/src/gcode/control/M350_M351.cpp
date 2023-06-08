@@ -53,7 +53,7 @@ void GcodeSuite::M350() {
  *       Parameter 'B' sets "5th axis" (after E0) only for an original XYZEB setup.
  */
 void GcodeSuite::M351() {
-  const int8_t bval = TERN(HAS_M350_B_PARAM, parser.byteval('B', -1), -1); UNUSED(bval);
+  const int8_t bval = TERN(HAS_M350_B_PARAM, parser.byteval('B', -1), -1); MARLIN_UNUSED(bval);
   if (parser.seenval('S')) switch (parser.value_byte()) {
     case 1:
       LOOP_LOGICAL_AXES(i) if (parser.seenval(AXIS_CHAR(i))) stepper.microstep_ms(i, parser.value_byte(), -1, -1);

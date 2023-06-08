@@ -514,7 +514,7 @@ void CardReader::manage_media() {
   // Load settings the first time media is inserted (not just during init)
   TERN_(SDCARD_EEPROM_EMULATION, settings.first_load());
 
-  bool do_auto = true; UNUSED(do_auto);
+  bool do_auto = true; MARLIN_UNUSED(do_auto);
 
   // Check for PLR file.
   TERN_(POWER_LOSS_RECOVERY, if (recovery.check()) do_auto = false);

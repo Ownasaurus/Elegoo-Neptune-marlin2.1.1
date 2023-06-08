@@ -86,7 +86,7 @@ static uint32_t clock_to_divider(uint32_t clk) {
 
 // Start the SDIO clock
 void HAL_SD_MspInit(SD_HandleTypeDef *hsd) {
-  UNUSED(hsd);
+  MARLIN_UNUSED(hsd);
   #ifdef SDIO_FOR_STM32H7
     pinmap_pinout(PC_12, PinMap_SD);
     pinmap_pinout(PD_2,  PinMap_SD);

@@ -301,7 +301,7 @@ class FilamentSensorBase {
             && !TERN0(MULTI_NOZZLE_DUPLICATION, extruder_duplication_enabled)
           ) return TEST(runout_states, extruder); // A specific extruder ran out
         #else
-          UNUSED(extruder);
+          MARLIN_UNUSED(extruder);
         #endif
         return !!runout_states;                   // Any extruder ran out
       }

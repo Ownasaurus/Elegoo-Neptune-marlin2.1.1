@@ -226,7 +226,7 @@ FORCE_INLINE void _draw_centered_temp(const celsius_t temp, const uint8_t tx, co
   // Draw hotend bitmap with current and target temperatures
   FORCE_INLINE void _draw_hotend_status(const heater_id_t heater_id, const bool blink) {
     #if !HEATER_IDLE_HANDLER
-      UNUSED(blink);
+      MARLIN_UNUSED(blink);
     #endif
 
     const bool isHeat = HOTEND_ALT(heater_id);
@@ -323,7 +323,7 @@ FORCE_INLINE void _draw_centered_temp(const celsius_t temp, const uint8_t tx, co
   // Draw bed bitmap with current and target temperatures
   FORCE_INLINE void _draw_bed_status(const bool blink) {
     #if !HEATER_IDLE_HANDLER
-      UNUSED(blink);
+      MARLIN_UNUSED(blink);
     #endif
 
     const uint8_t tx = STATUS_BED_TEXT_X;
@@ -1013,7 +1013,7 @@ void MarlinUI::draw_status_message(const bool blink) {
 
   #else // !STATUS_MESSAGE_SCROLLING
 
-    UNUSED(blink);
+    MARLIN_UNUSED(blink);
 
     // Just print the string to the LCD
     lcd_put_u8str_max(status_message, pixel_width);

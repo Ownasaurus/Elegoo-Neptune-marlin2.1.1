@@ -124,8 +124,8 @@ void lv_draw_wifi_list() {
       lv_group_add_obj(g, buttonBack);
     }
   #else
-    UNUSED(buttonDown);
-    UNUSED(buttonBack);
+    MARLIN_UNUSED(buttonDown);
+    MARLIN_UNUSED(buttonBack);
   #endif
 
   disp_wifi_list();

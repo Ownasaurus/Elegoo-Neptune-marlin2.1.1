@@ -146,7 +146,7 @@ static bool ensure_safe_temperature(const bool wait=true, const PauseMode mode=P
       thermalManager.setTargetHotend(thermalManager.extrude_min_temp, active_extruder);
   #endif
 
-  ui.pause_show_message(PAUSE_MESSAGE_HEATING, mode); UNUSED(mode);
+  ui.pause_show_message(PAUSE_MESSAGE_HEATING, mode); MARLIN_UNUSED(mode);
 
   if (wait) return thermalManager.wait_for_hotend(active_extruder);
 
@@ -397,7 +397,7 @@ bool pause_print(const_float_t retract, const xyz_pos_t &park_point, const bool 
   DEBUG_SECTION(pp, "pause_print", true);
   DEBUG_ECHOLNPGM("... park.x:", park_point.x, " y:", park_point.y, " z:", park_point.z, " unloadlen:", unload_length, " showlcd:", show_lcd DXC_SAY);
 
-  UNUSED(show_lcd);
+  MARLIN_UNUSED(show_lcd);
 
   if (did_pause_print) return false; // already paused
 

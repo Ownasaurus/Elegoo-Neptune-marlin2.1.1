@@ -129,7 +129,7 @@ static void createChar_P(const char c, const byte * const ptr) {
 
 void MarlinUI::set_custom_characters(const HD44780CharSet screen_charset/*=CHARSET_INFO*/) {
   #if NONE(LCD_PROGRESS_BAR, SHOW_BOOTSCREEN)
-    UNUSED(screen_charset);
+    MARLIN_UNUSED(screen_charset);
   #endif
 
   // CHARSET_BOOT
@@ -538,7 +538,7 @@ FORCE_INLINE void _draw_heater_status(const heater_id_t heater_id, const char pr
   lcd_put_lchar('/');
 
   #if !HEATER_IDLE_HANDLER
-    UNUSED(blink);
+    MARLIN_UNUSED(blink);
   #else
     if (!blink && thermalManager.heater_idle[thermalManager.idle_index_for_id(heater_id)].timed_out) {
       lcd_put_lchar(' ');
@@ -566,7 +566,7 @@ FORCE_INLINE void _draw_cooler_status(const char prefix, const bool blink) {
   lcd_put_lchar('/');
 
   #if !HEATER_IDLE_HANDLER
-    UNUSED(blink);
+    MARLIN_UNUSED(blink);
   #else
     if (!blink && thermalManager.heater_idle[thermalManager.idle_index_for_id(heater_id)].timed_out) {
       lcd_put_lchar(' ');
@@ -717,7 +717,7 @@ void MarlinUI::draw_status_message(const bool blink) {
       }
     }
   #else
-    UNUSED(blink);
+    MARLIN_UNUSED(blink);
 
     // Get the UTF8 character count of the string
     uint8_t slen = utf8_strlen(status_message);

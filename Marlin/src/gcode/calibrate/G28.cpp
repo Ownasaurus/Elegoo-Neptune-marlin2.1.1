@@ -408,7 +408,7 @@ void GcodeSuite::G28() {
                );
 
     #if HAS_Z_AXIS
-      UNUSED(needZ); UNUSED(homeZZ);
+      MARLIN_UNUSED(needZ); MARLIN_UNUSED(homeZZ);
     #else
       constexpr bool doZ = false;
     #endif

@@ -439,7 +439,7 @@ void DGUSScreenHandler::HandleFlowRateChanged(DGUS_VP_Variable &var, void *val_p
     planner.set_flow(target_extruder, newvalue);
     skipVP = var.VP; // don't overwrite value the next update time as the display might autoincrement in parallel
   #else
-    UNUSED(var); UNUSED(val_ptr);
+    MARLIN_UNUSED(var); MARLIN_UNUSED(val_ptr);
   #endif
 }
 

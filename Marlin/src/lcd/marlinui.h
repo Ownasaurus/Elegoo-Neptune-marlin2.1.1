@@ -526,7 +526,7 @@ public:
   #endif
 
   static void reset_status_timeout(const millis_t ms) {
-    TERN(SCREENS_CAN_TIME_OUT, return_to_status_ms = ms + LCD_TIMEOUT_TO_STATUS, UNUSED(ms));
+    TERN(SCREENS_CAN_TIME_OUT, return_to_status_ms = ms + LCD_TIMEOUT_TO_STATUS, MARLIN_UNUSED(ms));
   }
 
   #if HAS_MARLINUI_MENU
@@ -581,7 +581,7 @@ public:
     }
 
     FORCE_INLINE static void defer_status_screen(const bool defer=true) {
-      TERN(SCREENS_CAN_TIME_OUT, defer_return_to_status = defer, UNUSED(defer));
+      TERN(SCREENS_CAN_TIME_OUT, defer_return_to_status = defer, MARLIN_UNUSED(defer));
     }
 
     static void goto_previous_screen_no_defer() {

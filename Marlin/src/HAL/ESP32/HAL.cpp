@@ -95,7 +95,7 @@ struct {
     #if ENABLED(ESP3D_WIFISUPPORT)
       return esp3dlib.parse(command_ptr);
     #else
-      UNUSED(command_ptr);
+      MARLIN_UNUSED(command_ptr);
       return false;
     #endif
   }

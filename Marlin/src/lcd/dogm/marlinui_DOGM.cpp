@@ -132,7 +132,7 @@ bool MarlinUI::detected() { return true; }
         const u8g_pgm_uint8_t * const bmp = custom_start_bmp;
       #endif
 
-      UNUSED(frame);
+      MARLIN_UNUSED(frame);
 
       u8g.drawBitmapP(left, top, CUSTOM_BOOTSCREEN_BMP_BYTEWIDTH, CUSTOM_BOOTSCREEN_BMPHEIGHT, bmp);
 

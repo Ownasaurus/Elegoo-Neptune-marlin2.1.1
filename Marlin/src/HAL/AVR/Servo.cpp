@@ -217,7 +217,7 @@ void finISR(const timer16_Sequence_t timer_index) {
     }
   #else // !WIRING
     // For arduino - in future: call here to a currently undefined function to reset the timer
-    UNUSED(timer_index);
+    MARLIN_UNUSED(timer_index);
   #endif
 }
 

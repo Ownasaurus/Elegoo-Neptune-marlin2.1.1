@@ -104,8 +104,8 @@
  * \def UNUSED
  * \brief Marking \a v as a unused parameter or value.
  */
-#ifndef UNUSED
-  #define UNUSED(x) ((void)(x))
+#ifndef MARLIN_UNUSED
+  #define MARLIN_UNUSED(x) ((void)(x))
 #endif
 
 /**

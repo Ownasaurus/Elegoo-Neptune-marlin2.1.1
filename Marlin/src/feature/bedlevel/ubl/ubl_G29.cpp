@@ -695,7 +695,7 @@ void unified_bed_leveling::G29() {
       gcode.process_subcommands_now(F(Z_PROBE_END_SCRIPT));
     }
   #else
-    UNUSED(probe_deployed);
+    MARLIN_UNUSED(probe_deployed);
   #endif
 
   TERN_(HAS_MULTI_HOTEND, if (old_tool_index != 0) tool_change(old_tool_index));
@@ -836,7 +836,7 @@ void set_message_with_feedback(FSTR_P const fstr) {
     ui.set_status(fstr);
     ui.quick_feedback();
   #else
-    UNUSED(fstr);
+    MARLIN_UNUSED(fstr);
   #endif
 }
 

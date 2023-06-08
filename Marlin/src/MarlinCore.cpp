@@ -276,7 +276,7 @@ bool wait_for_heatup = true;
     #if ENABLED(RTS_AVAILABLE)
       wait_for_user = false;
     #else
-      UNUSED(no_sleep);
+      MARLIN_UNUSED(no_sleep);
       KEEPALIVE_STATE(PAUSED_FOR_USER);
       wait_for_user = true;
       if (ms) ms += millis(); // expire time
@@ -931,7 +931,7 @@ void kill(FSTR_P const lcd_error/*=nullptr*/, FSTR_P const lcd_component/*=nullp
   #if HAS_DISPLAY
     ui.kill_screen(lcd_error ?: GET_TEXT_F(MSG_KILLED), lcd_component ?: FPSTR(NUL_STR));
   #else
-    UNUSED(lcd_error); UNUSED(lcd_component);
+    MARLIN_UNUSED(lcd_error); MARLIN_UNUSED(lcd_component);
   #endif
 
   TERN_(HAS_TFT_LVGL_UI, lv_draw_error_message(lcd_error));

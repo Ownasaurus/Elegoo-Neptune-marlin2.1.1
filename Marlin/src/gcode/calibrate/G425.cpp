@@ -608,7 +608,7 @@ inline void probe_sides(measurements_t &m, const float uncertainty) {
       SERIAL_ECHOLNPGM_P(SP_Y_STR, m.nozzle_outer_dimension.y);
     #endif
     SERIAL_EOL();
-    UNUSED(m);
+    MARLIN_UNUSED(m);
   }
 
   #if HAS_HOTEND_OFFSET
@@ -749,7 +749,7 @@ inline void calibrate_toolhead(measurements_t &m, const float uncertainty, const
   TEMPORARY_BACKLASH_CORRECTION(backlash.all_on);
   TEMPORARY_BACKLASH_SMOOTHING(0.0f);
 
-  TERN(HAS_MULTI_HOTEND, set_nozzle(m, extruder), UNUSED(extruder));
+  TERN(HAS_MULTI_HOTEND, set_nozzle(m, extruder), MARLIN_UNUSED(extruder));
 
   probe_sides(m, uncertainty);
 

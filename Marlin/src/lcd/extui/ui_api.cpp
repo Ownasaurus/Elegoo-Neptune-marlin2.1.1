@@ -176,7 +176,7 @@ namespace ExtUI {
     #if HAS_HOTEND && HEATER_IDLE_HANDLER
       thermalManager.reset_hotend_idle_timer(extruder - E0);
     #else
-      UNUSED(extruder);
+      MARLIN_UNUSED(extruder);
     #endif
   }
 
@@ -197,7 +197,7 @@ namespace ExtUI {
           break;
       }
     #else
-      UNUSED(heater);
+      MARLIN_UNUSED(heater);
     #endif
   }
 
@@ -241,7 +241,7 @@ namespace ExtUI {
     #if HAS_HOTEND && HEATER_IDLE_HANDLER
       return thermalManager.heater_idle[extruder - E0].timed_out;
     #else
-      UNUSED(extruder);
+      MARLIN_UNUSED(extruder);
       return false;
     #endif
   }
@@ -259,7 +259,7 @@ namespace ExtUI {
           return TERN0(HAS_HOTEND, thermalManager.heater_idle[heater - H0].timed_out);
       }
     #else
-      UNUSED(heater);
+      MARLIN_UNUSED(heater);
       return false;
     #endif
   }
@@ -303,12 +303,12 @@ namespace ExtUI {
   }
 
   float getTargetFan_percent(const fan_t fan) {
-    UNUSED(fan);
+    MARLIN_UNUSED(fan);
     return TERN0(HAS_FAN, thermalManager.fanSpeedPercent(fan - FAN0));
   }
 
   float getActualFan_percent(const fan_t fan) {
-    UNUSED(fan);
+    MARLIN_UNUSED(fan);
     return TERN0(HAS_FAN, thermalManager.scaledFanSpeedPercent(fan - FAN0));
   }
 
@@ -355,8 +355,8 @@ namespace ExtUI {
       if (e != active_extruder) tool_change(e, no_move);
       active_extruder = e;
     #else
-      UNUSED(extruder);
-      UNUSED(no_move);
+      MARLIN_UNUSED(extruder);
+      MARLIN_UNUSED(no_move);
     #endif
   }
 
@@ -622,7 +622,7 @@ namespace ExtUI {
         #endif
         default: break;
       }
-      UNUSED(value);
+      MARLIN_UNUSED(value);
     }
   #endif
 
@@ -631,7 +631,7 @@ namespace ExtUI {
   }
 
   float getAxisSteps_per_mm(const extruder_t extruder) {
-    UNUSED(extruder);
+    MARLIN_UNUSED(extruder);
     return planner.settings.axis_steps_per_mm[E_AXIS_N(extruder - E0)];
   }
 
@@ -641,7 +641,7 @@ namespace ExtUI {
   }
 
   void setAxisSteps_per_mm(const_float_t value, const extruder_t extruder) {
-    UNUSED(extruder);
+    MARLIN_UNUSED(extruder);
     planner.settings.axis_steps_per_mm[E_AXIS_N(extruder - E0)] = value;
     planner.refresh_positioning();
   }
@@ -651,7 +651,7 @@ namespace ExtUI {
   }
 
   feedRate_t getAxisMaxFeedrate_mm_s(const extruder_t extruder) {
-    UNUSED(extruder);
+    MARLIN_UNUSED(extruder);
     return planner.settings.max_feedrate_mm_s[E_AXIS_N(extruder - E0)];
   }
 
@@ -660,7 +660,7 @@ namespace ExtUI {
   }
 
   void setAxisMaxFeedrate_mm_s(const feedRate_t value, const extruder_t extruder) {
-    UNUSED(extruder);
+    MARLIN_UNUSED(extruder);
     planner.set_max_feedrate(E_AXIS_N(extruder - E0), value);
   }
 
@@ -669,7 +669,7 @@ namespace ExtUI {
   }
 
   float getAxisMaxAcceleration_mm_s2(const extruder_t extruder) {
-    UNUSED(extruder);
+    MARLIN_UNUSED(extruder);
     return planner.settings.max_acceleration_mm_per_s2[E_AXIS_N(extruder - E0)];
   }
 
@@ -678,7 +678,7 @@ namespace ExtUI {
   }
 
   void setAxisMaxAcceleration_mm_s2(const_float_t value, const extruder_t extruder) {
-    UNUSED(extruder);
+    MARLIN_UNUSED(extruder);
     planner.set_max_acceleration(E_AXIS_N(extruder - E0), value);
   }
 
@@ -797,7 +797,7 @@ namespace ExtUI {
      */
     void smartAdjustAxis_steps(const int16_t steps, const axis_t axis, bool linked_nozzles) {
       const float mm = steps * planner.mm_per_step[axis];
-      UNUSED(mm);
+      MARLIN_UNUSED(mm);
 
       if (!babystepAxis_steps(steps, axis)) return;
 
@@ -823,7 +823,7 @@ namespace ExtUI {
           TERN_(HAS_Z_AXIS, normalizeNozzleOffset(Z));
         }
       #else
-        UNUSED(linked_nozzles);
+        MARLIN_UNUSED(linked_nozzles);
       #endif
     }
 
@@ -859,7 +859,7 @@ namespace ExtUI {
     #elif ENABLED(BABYSTEP_DISPLAY_TOTAL)
       babystep.add_mm(Z_AXIS, value - getZOffset_mm());
     #else
-      UNUSED(value);
+      MARLIN_UNUSED(value);
     #endif
   }
 
@@ -947,8 +947,8 @@ namespace ExtUI {
           prepare_line_to_destination();
           feedrate_mm_s = old_feedrate;
         #else
-          UNUSED(pos);
-          UNUSED(z);
+          MARLIN_UNUSED(pos);
+          MARLIN_UNUSED(z);
         #endif
       }
 
@@ -1066,8 +1066,8 @@ namespace ExtUI {
       if (fan < FAN_COUNT)
         thermalManager.set_fan_speed(fan - FAN0, map(constrain(value, 0, 100), 0, 100, 0, 255));
     #else
-      UNUSED(value);
-      UNUSED(fan);
+      MARLIN_UNUSED(value);
+      MARLIN_UNUSED(fan);
     #endif
   }
 
@@ -1087,7 +1087,7 @@ namespace ExtUI {
   #endif
 
   void printFile(const char *filename) {
-    TERN(SDSUPPORT, card.openAndPrintFile(filename), UNUSED(filename));
+    TERN(SDSUPPORT, card.openAndPrintFile(filename), MARLIN_UNUSED(filename));
   }
 
   bool isPrintingFromMediaPaused() {
@@ -1141,8 +1141,8 @@ namespace ExtUI {
       card.getfilename_sorted(SD_ORDER(pos, count()));
       return card.filename[0] != '\0';
     #else
-      UNUSED(pos);
-      UNUSED(skip_range_check);
+      MARLIN_UNUSED(pos);
+      MARLIN_UNUSED(skip_range_check);
       return false;
     #endif
   }
@@ -1183,7 +1183,7 @@ namespace ExtUI {
       card.cd(dirname);
       num_files = 0xFFFF;
     #else
-      UNUSED(dirname);
+      MARLIN_UNUSED(dirname);
     #endif
   }
 

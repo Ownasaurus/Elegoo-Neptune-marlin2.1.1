@@ -47,7 +47,7 @@
 #ifndef _CONF_USB_H_
 #define _CONF_USB_H_
 
-#undef UNUSED                           /* To avoid a macro clash as macros.h already defines it */
+//#undef UNUSED                           /* To avoid a macro clash as macros.h already defines it */
 #include "../../../inc/MarlinConfigPre.h"
 #include "compiler.h"
 

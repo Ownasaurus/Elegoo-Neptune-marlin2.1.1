@@ -335,7 +335,7 @@ typedef struct {
 
     #else
 
-      UNUSED(bed_temp);
+      MARLIN_UNUSED(bed_temp);
 
     #endif // HAS_HEATED_BED
 

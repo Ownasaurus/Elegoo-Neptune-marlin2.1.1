@@ -482,7 +482,7 @@ static uint8_t udi_cdc_setup_to_port(void)
 static void udi_cdc_line_coding_received(void)
 {
 	uint8_t port = udi_cdc_setup_to_port();
-	UNUSED(port);
+	MARLIN_UNUSED(port);
 
 	UDI_CDC_SET_CODING_EXT(port, (&udi_cdc_line_coding[port]));
 }
@@ -546,8 +546,8 @@ static void udi_cdc_ctrl_state_notify(uint8_t port, udd_ep_id_t ep)
 static void udi_cdc_serial_state_msg_sent(udd_ep_status_t status, iram_size_t n, udd_ep_id_t ep)
 {
 	uint8_t port;
-	UNUSED(n);
-	UNUSED(status);
+	MARLIN_UNUSED(n);
+	MARLIN_UNUSED(status);
 
 	switch (ep) {
 #define UDI_CDC_GET_PORT_FROM_COMM_EP(iface, unused) \
@@ -672,7 +672,7 @@ static void udi_cdc_data_received(udd_ep_status_t status, iram_size_t n, udd_ep_
 static void udi_cdc_data_sent(udd_ep_status_t status, iram_size_t n, udd_ep_id_t ep)
 {
 	uint8_t port;
-	UNUSED(n);
+	MARLIN_UNUSED(n);
 
 	switch (ep) {
 #define UDI_CDC_DATA_EP_IN_TO_PORT(index, unused) \

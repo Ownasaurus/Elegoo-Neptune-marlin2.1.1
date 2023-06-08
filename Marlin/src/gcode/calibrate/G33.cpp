@@ -176,7 +176,7 @@ static float calibration_probe(const xy_pos_t &xy, const bool stow, const bool p
   #if HAS_BED_PROBE
     return probe.probe_at_point(xy, stow ? PROBE_PT_STOW : PROBE_PT_RAISE, 0, probe_at_offset, false);
   #else
-    UNUSED(stow);
+    MARLIN_UNUSED(stow);
     return lcd_probe_pt(xy);
   #endif
 }

@@ -475,7 +475,7 @@ bool DiskIODriver_SPI_SD::readData(uint8_t *dst, const uint16_t count) {
       if (!success) error(SD_CARD_ERROR_READ_CRC);
     #else
       success = true;
-      UNUSED(recvCrc);
+      MARLIN_UNUSED(recvCrc);
     #endif
   }
   else

@@ -1101,7 +1101,7 @@ void tool_change(const uint8_t new_tool, bool no_move/*=false*/) {
 
   #if ENABLED(MIXING_EXTRUDER)
 
-    UNUSED(no_move);
+    MARLIN_UNUSED(no_move);
 
     if (new_tool >= MIXING_VIRTUAL_TOOLS)
       return invalid_extruder_error(new_tool);
@@ -1113,18 +1113,18 @@ void tool_change(const uint8_t new_tool, bool no_move/*=false*/) {
 
   #elif HAS_PRUSA_MMU2
 
-    UNUSED(no_move);
+    MARLIN_UNUSED(no_move);
 
     mmu2.tool_change(new_tool);
 
   #elif EXTRUDERS == 0
 
     // Nothing to do
-    UNUSED(new_tool); UNUSED(no_move);
+    MARLIN_UNUSED(new_tool); MARLIN_UNUSED(no_move);
 
   #elif EXTRUDERS < 2
 
-    UNUSED(no_move);
+    MARLIN_UNUSED(no_move);
 
     if (new_tool) invalid_extruder_error(new_tool);
     return;

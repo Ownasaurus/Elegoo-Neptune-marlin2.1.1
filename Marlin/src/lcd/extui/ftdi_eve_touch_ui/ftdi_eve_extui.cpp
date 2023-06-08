@@ -103,7 +103,7 @@ namespace ExtUI {
         SERIAL_ECHOLNPGM("EEPROM backed up to SPI Flash");
       }
     #else
-      UNUSED(success);
+      MARLIN_UNUSED(success);
     #endif
   }
   void onSettingsLoaded(bool) {}

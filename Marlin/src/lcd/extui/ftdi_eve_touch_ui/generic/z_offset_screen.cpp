@@ -63,7 +63,7 @@ void ZOffsetScreen::move(float mm, int16_t steps) {
   }
   else {
     // Otherwise doing a manual adjustment, possibly during a print.
-    TERN(BABYSTEPPING, babystepAxis_steps(steps, Z), UNUSED(steps));
+    TERN(BABYSTEPPING, babystepAxis_steps(steps, Z), MARLIN_UNUSED(steps));
   }
 }
 

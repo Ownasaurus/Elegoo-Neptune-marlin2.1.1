@@ -85,7 +85,7 @@ class MenuItem_sdfile : public MenuItem_sdbase {
         });
       #else
         sdcard_start_selected_file();
-        UNUSED(fstr);
+        MARLIN_UNUSED(fstr);
       #endif
     }
 };

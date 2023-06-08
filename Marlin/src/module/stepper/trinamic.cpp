@@ -245,7 +245,7 @@ enum StealthIndex : uint8_t {
     pwmconf.pwm_ampl = 180;
     st.PWMCONF(pwmconf.sr);
 
-    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), UNUSED(hyb_thrs));
+    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), MARLIN_UNUSED(hyb_thrs));
 
     st.GSTAT(); // Clear GSTAT
   }
@@ -283,7 +283,7 @@ enum StealthIndex : uint8_t {
     pwmconf.pwm_ofs = 36;
     st.PWMCONF(pwmconf.sr);
 
-    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), UNUSED(hyb_thrs));
+    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), MARLIN_UNUSED(hyb_thrs));
 
     st.GSTAT(); // Clear GSTAT
   }
@@ -702,7 +702,7 @@ enum StealthIndex : uint8_t {
     pwmconf.pwm_ofs = 36;
     st.PWMCONF(pwmconf.sr);
 
-    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), UNUSED(hyb_thrs));
+    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), MARLIN_UNUSED(hyb_thrs));
 
     st.GSTAT(0b111); // Clear
     delay(200);
@@ -744,7 +744,7 @@ enum StealthIndex : uint8_t {
     pwmconf.pwm_ofs = 36;
     st.PWMCONF(pwmconf.sr);
 
-    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), UNUSED(hyb_thrs));
+    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), MARLIN_UNUSED(hyb_thrs));
 
     st.GSTAT(0b111); // Clear
     delay(200);
@@ -802,7 +802,7 @@ enum StealthIndex : uint8_t {
     pwmconf.pwm_ampl = 180;
     st.PWMCONF(pwmconf.sr);
 
-    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), UNUSED(hyb_thrs));
+    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), MARLIN_UNUSED(hyb_thrs));
 
     st.GSTAT(); // Clear GSTAT
   }
@@ -840,7 +840,7 @@ enum StealthIndex : uint8_t {
     pwmconf.pwm_ofs = 36;
     st.PWMCONF(pwmconf.sr);
 
-    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), UNUSED(hyb_thrs));
+    TERN(HYBRID_THRESHOLD, st.set_pwm_thrs(hyb_thrs), MARLIN_UNUSED(hyb_thrs));
     st.GSTAT(); // Clear GSTAT
   }
 #endif // TMC5160

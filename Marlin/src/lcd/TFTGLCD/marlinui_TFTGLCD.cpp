@@ -480,7 +480,7 @@ FORCE_INLINE void _draw_axis_value(const AxisEnum axis, const char *value, const
     #endif // HOTENDS <= 1
 
     #if !HEATER_IDLE_HANDLER
-      UNUSED(blink);
+      MARLIN_UNUSED(blink);
     #else
       if (!blink && thermalManager.heater_idle[thermalManager.idle_index_for_id(heater_id)].timed_out) {
         lcd.write(' ');
@@ -521,7 +521,7 @@ FORCE_INLINE void _draw_axis_value(const AxisEnum axis, const char *value, const
     lcd_moveto(1, 7);
 
     #if !HEATER_IDLE_HANDLER
-      UNUSED(blink);
+      MARLIN_UNUSED(blink);
     #else
       if (!blink && thermalManager.heater_idle[thermalManager.idle_index_for_id(heater_id)].timed_out) {
         lcd_put_lchar(' ');
@@ -705,7 +705,7 @@ void MarlinUI::draw_status_message(const bool blink) {
 
   #else
 
-    UNUSED(blink);
+    MARLIN_UNUSED(blink);
 
     // Just print the string to the LCD
     lcd_put_u8str_max(status_message, LCD_WIDTH);

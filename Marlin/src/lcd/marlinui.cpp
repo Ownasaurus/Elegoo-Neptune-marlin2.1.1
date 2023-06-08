@@ -732,7 +732,7 @@ void MarlinUI::init() {
         TERN_(HAS_ADC_BUTTONS, keypad_buttons =) buttons = 0;
       next_button_update_ms = millis() + 500;
     #else
-      UNUSED(clear_buttons);
+      MARLIN_UNUSED(clear_buttons);
     #endif
 
     chirp();  // Buzz and wait. Is the delay needed for buttons to settle?
@@ -1536,7 +1536,7 @@ void MarlinUI::init() {
 
   void MarlinUI::finish_status(const bool persist) {
 
-    UNUSED(persist);
+    MARLIN_UNUSED(persist);
 
     set_status_reset_fn();
 
@@ -1595,13 +1595,13 @@ void MarlinUI::init() {
   // Send the status line as a host notification
   //
   void MarlinUI::set_status(const char * const cstr, const bool) {
-    TERN(HOST_PROMPT_SUPPORT, hostui.notify(cstr), UNUSED(cstr));
+    TERN(HOST_PROMPT_SUPPORT, hostui.notify(cstr), MARLIN_UNUSED(cstr));
   }
   void MarlinUI::set_status(FSTR_P const fstr, const int8_t) {
-    TERN(HOST_PROMPT_SUPPORT, hostui.notify(fstr), UNUSED(fstr));
+    TERN(HOST_PROMPT_SUPPORT, hostui.notify(fstr), MARLIN_UNUSED(fstr));
   }
   void MarlinUI::status_printf(int8_t, FSTR_P const fstr, ...) {
-    TERN(HOST_PROMPT_SUPPORT, hostui.notify(fstr), UNUSED(fstr));
+    TERN(HOST_PROMPT_SUPPORT, hostui.notify(fstr), MARLIN_UNUSED(fstr));
   }
 
 #endif // !HAS_STATUS_MESSAGE

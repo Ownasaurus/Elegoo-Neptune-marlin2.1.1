@@ -60,7 +60,7 @@ void CaseLight::update(const bool sflag) {
       brightness = brightness_sav;  // Restore last brightness for M355 S1
 
     const uint8_t i = on ? brightness : 0, n10ct = ENABLED(INVERT_CASE_LIGHT) ? 255 - i : i;
-    UNUSED(n10ct);
+    MARLIN_UNUSED(n10ct);
   #endif
 
   #if CASE_LIGHT_IS_COLOR_LED

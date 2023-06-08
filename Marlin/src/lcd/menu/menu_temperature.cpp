@@ -50,7 +50,7 @@
 #if HAS_PREHEAT
 
   void Temperature::lcd_preheat(const uint8_t e, const int8_t indh, const int8_t indb) {
-    UNUSED(e); UNUSED(indh); UNUSED(indb);
+    MARLIN_UNUSED(e); MARLIN_UNUSED(indh); MARLIN_UNUSED(indb);
     #if HAS_HOTEND
       if (indh >= 0 && ui.material_preset[indh].hotend_temp > 0)
         setTargetHotend(_MIN(thermalManager.hotend_max_target(e), ui.material_preset[indh].hotend_temp), e);

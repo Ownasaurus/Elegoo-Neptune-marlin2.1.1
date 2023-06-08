@@ -341,7 +341,7 @@ void MarlinUI::draw_status_screen() {
 
   // Axis values
   const xyz_pos_t lpos = current_position.asLogical();
-  const bool show_e_total = TERN0(LCD_SHOW_E_TOTAL, printingIsActive()); UNUSED(show_e_total);
+  const bool show_e_total = TERN0(LCD_SHOW_E_TOTAL, printingIsActive()); MARLIN_UNUSED(show_e_total);
 
   constexpr int16_t cpy = TERN(DWIN_MARLINUI_PORTRAIT, 195, 117);
   if (show_e_total) {

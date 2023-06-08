@@ -51,7 +51,7 @@ void (*DWINUI::onTitleDraw)(TitleClass* title) = nullptr;
 
 void DWINUI::init() {
   delay(750);   // Delay for wait to wakeup screen
-  const bool hs = DWIN_Handshake(); UNUSED(hs);
+  const bool hs = DWIN_Handshake(); MARLIN_UNUSED(hs);
   #if ENABLED(DEBUG_DWIN)
     SERIAL_ECHOPGM("DWIN_Handshake ");
     SERIAL_ECHOLNF(hs ? F("ok.") : F("error."));

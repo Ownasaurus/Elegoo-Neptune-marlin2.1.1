@@ -244,7 +244,7 @@ void MarlinUI::draw_status_message(const bool blink) {
 
   #else
 
-    UNUSED(blink);
+    MARLIN_UNUSED(blink);
 
     if (status_changed()) {
       // Get the UTF8 character count of the string

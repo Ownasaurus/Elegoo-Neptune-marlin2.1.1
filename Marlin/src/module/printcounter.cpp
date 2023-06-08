@@ -159,7 +159,7 @@ void PrintCounter::loadStats() {
     #if HAS_SOUND && SERVICE_WARNING_BUZZES > 0
       if (doBuzz) for (int i = 0; i < SERVICE_WARNING_BUZZES; i++) { BUZZ(200, 404); BUZZ(10, 0); }
     #else
-      UNUSED(doBuzz);
+      MARLIN_UNUSED(doBuzz);
     #endif
   #endif // HAS_SERVICE_INTERVALS
 }

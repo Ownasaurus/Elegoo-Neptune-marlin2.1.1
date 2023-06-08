@@ -142,7 +142,7 @@ void Max7219::error(FSTR_P const func, const int32_t v1, const int32_t v2/*=-1*/
     SERIAL_CHAR(')');
     SERIAL_EOL();
   #else
-    UNUSED(func); UNUSED(v1); UNUSED(v2);
+    MARLIN_UNUSED(func); MARLIN_UNUSED(v1); MARLIN_UNUSED(v2);
   #endif
 }
 
@@ -307,7 +307,7 @@ void Max7219::send_row(const uint8_t row) {
       refresh_line(LED_IND(0, row));      // Same line, all units
     #endif
   #else                                   // Native lines are vertical
-    UNUSED(row);
+    MARLIN_UNUSED(row);
     refresh();                            // Actually a column
   #endif
 }
@@ -321,7 +321,7 @@ void Max7219::send_column(const uint8_t col) {
       refresh_line(LED_IND(col, 0));      // Same line, all units
     #endif
   #else                                   // Native lines are horizontal
-    UNUSED(col);
+    MARLIN_UNUSED(col);
     refresh();                            // Actually a row
   #endif
 }

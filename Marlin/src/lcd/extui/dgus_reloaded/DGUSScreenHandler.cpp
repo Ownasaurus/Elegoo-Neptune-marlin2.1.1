@@ -237,7 +237,7 @@ void DGUSScreenHandler::ConfigurationStoreRead(bool success) {
 }
 
 void DGUSScreenHandler::PlayTone(const uint16_t frequency, const uint16_t duration) {
-  UNUSED(duration);
+  MARLIN_UNUSED(duration);
 
   if (frequency >= 1 && frequency <= 255) {
     if (duration >= 1 && duration <= 255)

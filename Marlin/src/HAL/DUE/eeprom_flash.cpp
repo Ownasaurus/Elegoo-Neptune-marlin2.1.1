@@ -159,8 +159,8 @@ static void ee_Dump(const int page, const void *data) {
     }
 
   #else
-    UNUSED(page);
-    UNUSED(data);
+    MARLIN_UNUSED(page);
+    MARLIN_UNUSED(data);
   #endif
 }
 

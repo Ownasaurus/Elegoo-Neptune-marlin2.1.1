@@ -386,7 +386,7 @@ bool mem_unload(U8 lun, bool unload)
 {
   bool unloaded;
 #if !MAX_LUN || !defined(Lun_usb_unload)
-  UNUSED(lun);
+  MARLIN_UNUSED(lun);
 #endif
 
   if (!Ctrl_access_lock()) return false;
@@ -438,7 +438,7 @@ bool mem_removal(U8 lun)
 {
   bool removal;
 #if MAX_LUN==0
-  UNUSED(lun);
+  MARLIN_UNUSED(lun);
 #endif
 
   if (!Ctrl_access_lock()) return true;
@@ -462,7 +462,7 @@ bool mem_removal(U8 lun)
 const char *mem_name(U8 lun)
 {
 #if MAX_LUN==0
-  UNUSED(lun);
+  MARLIN_UNUSED(lun);
 #endif
   return
 #if MAX_LUN
@@ -542,7 +542,7 @@ Ctrl_status memory_2_ram(U8 lun, U32 addr, void *ram)
 {
   Ctrl_status status;
 #if MAX_LUN==0
-  UNUSED(lun);
+  MARLIN_UNUSED(lun);
 #endif
 
   if (!Ctrl_access_lock()) return CTRL_FAIL;
@@ -569,7 +569,7 @@ Ctrl_status ram_2_memory(U8 lun, U32 addr, const void *ram)
 {
   Ctrl_status status;
 #if MAX_LUN==0
-  UNUSED(lun);
+  MARLIN_UNUSED(lun);
 #endif
 
   if (!Ctrl_access_lock()) return CTRL_FAIL;
@@ -628,14 +628,14 @@ Ctrl_status stream_mem_to_mem(U8 src_lun, U32 src_addr, U8 dest_lun, U32 dest_ad
 
 Ctrl_status stream_state(U8 id)
 {
-  UNUSED(id);
+  MARLIN_UNUSED(id);
   return CTRL_GOOD;
 }
 
 
 U16 stream_stop(U8 id)
 {
-  UNUSED(id);
+  MARLIN_UNUSED(id);
   return 0;
 }
 

@@ -831,7 +831,7 @@ volatile bool Temperature::raw_temps_ready = false;
             PID_PARAM(Kd, e) = scalePID_d(in_pid.Kd);
             updatePID();
           #else
-            UNUSED(e); UNUSED(in_pid);
+            MARLIN_UNUSED(e); MARLIN_UNUSED(in_pid);
           #endif
         };
 
@@ -1317,7 +1317,7 @@ void Temperature::_temp_error(const heater_id_t heater_id, FSTR_P const serial_m
         break;
     }
   #elif defined(BOGUS_TEMPERATURE_GRACE_PERIOD)
-    UNUSED(killed);
+    MARLIN_UNUSED(killed);
   #else
     if (!killed) { killed = 1; loud_kill(lcd_msg, heater_id); }
   #endif
@@ -1963,7 +1963,7 @@ void Temperature::task() {
     #endif
   #endif
 
-  UNUSED(ms);
+  MARLIN_UNUSED(ms);
 }
 
 #define TEMP_AD595(RAW)  ((RAW) * 5.0 * 100.0 / float(HAL_ADC_RANGE) / (OVERSAMPLENR) * (TEMP_SENSOR_AD595_GAIN) + TEMP_SENSOR_AD595_OFFSET)
@@ -2243,7 +2243,7 @@ void Temperature::task() {
     #elif TEMP_SENSOR_BED_IS_AD8495
       return TEMP_AD8495(raw);
     #else
-      UNUSED(raw);
+      MARLIN_UNUSED(raw);
       return 0;
     #endif
   }
@@ -2261,7 +2261,7 @@ void Temperature::task() {
     #elif TEMP_SENSOR_CHAMBER_IS_AD8495
       return TEMP_AD8495(raw);
     #else
-      UNUSED(raw);
+      MARLIN_UNUSED(raw);
       return 0;
     #endif
   }
@@ -2279,7 +2279,7 @@ void Temperature::task() {
     #elif TEMP_SENSOR_COOLER_IS_AD8495
       return TEMP_AD8495(raw);
     #else
-      UNUSED(raw);
+      MARLIN_UNUSED(raw);
       return 0;
     #endif
   }
@@ -2297,7 +2297,7 @@ void Temperature::task() {
     #elif TEMP_SENSOR_PROBE_IS_AD8495
       return TEMP_AD8495(raw);
     #else
-      UNUSED(raw);
+      MARLIN_UNUSED(raw);
       return 0;
     #endif
   }
@@ -2315,7 +2315,7 @@ void Temperature::task() {
     #elif TEMP_SENSOR_BOARD_IS_AD8495
       return TEMP_AD8495(raw);
     #else
-      UNUSED(raw);
+      MARLIN_UNUSED(raw);
       return 0;
     #endif
   }
@@ -2337,7 +2337,7 @@ void Temperature::task() {
     #elif TEMP_SENSOR_REDUNDANT_IS_AD8495
       return TEMP_AD8495(raw);
     #else
-      UNUSED(raw);
+      MARLIN_UNUSED(raw);
       return 0;
     #endif
   }

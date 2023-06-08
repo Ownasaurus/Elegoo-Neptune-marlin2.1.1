@@ -118,6 +118,6 @@ void GcodeSuite::M92_report(const bool forReplay/*=true*/, const int8_t e/*=-1*/
       );
     }
   #else
-    UNUSED(e);
+    MARLIN_UNUSED(e);
   #endif
 }

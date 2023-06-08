@@ -503,7 +503,7 @@ void DGUSTxHandler::TotalPrints(DGUS_VP &vp) {
   #if ENABLED(PRINTCOUNTER)
     dgus_display.Write((uint16_t)vp.addr, dgus_display.SwapBytes(print_job_timer.getStats().totalPrints));
   #else
-    UNUSED(vp);
+    MARLIN_UNUSED(vp);
   #endif
 }
 
@@ -511,7 +511,7 @@ void DGUSTxHandler::FinishedPrints(DGUS_VP &vp) {
   #if ENABLED(PRINTCOUNTER)
     dgus_display.Write((uint16_t)vp.addr, dgus_display.SwapBytes(print_job_timer.getStats().finishedPrints));
   #else
-    UNUSED(vp);
+    MARLIN_UNUSED(vp);
   #endif
 }
 

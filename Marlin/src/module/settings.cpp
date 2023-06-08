@@ -2757,7 +2757,7 @@ void MarlinSettings::postprocess() {
 
     inline void ubl_invalid_slot(const int s) {
       DEBUG_ECHOLNPGM("?Invalid slot.\n", s, " mesh slots available.");
-      UNUSED(s);
+      MARLIN_UNUSED(s);
     }
 
     // 128 (+1 because of the change to capacity rather than last valid address)

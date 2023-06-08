@@ -679,7 +679,7 @@ class Temperature {
       #endif
 
       static uint8_t scaledFanSpeed(const uint8_t fan, const uint8_t fs) {
-        UNUSED(fan); // Potentially unused!
+        MARLIN_UNUSED(fan); // Potentially unused!
         return (fs * uint16_t(TERN(ADAPTIVE_FAN_SLOWING, fan_speed_scaler[fan], 128))) >> 7;
       }
 
@@ -802,7 +802,7 @@ class Temperature {
 
       // Start watching a Hotend to make sure it's really heating up
       static void start_watching_hotend(const uint8_t E_NAME) {
-        UNUSED(HOTEND_INDEX);
+        MARLIN_UNUSED(HOTEND_INDEX);
         #if WATCH_HOTENDS
           watch_hotend[HOTEND_INDEX].restart(degHotend(HOTEND_INDEX), degTargetHotend(HOTEND_INDEX));
         #endif

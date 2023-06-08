@@ -418,7 +418,7 @@ FORCE_INLINE void probe_specific_action(const bool deploy) {
 
   #elif DISABLED(PAUSE_BEFORE_DEPLOY_STOW)
 
-    UNUSED(deploy);
+    MARLIN_UNUSED(deploy);
 
   #endif
 }
@@ -716,7 +716,7 @@ float Probe::run_z_probe(const bool sanity_check/*=true*/) {
         DEBUG_EOL();
       }
     #else
-      UNUSED(plbl);
+      MARLIN_UNUSED(plbl);
     #endif
     return probe_fail || early_fail;
   };
@@ -791,7 +791,7 @@ float Probe::run_z_probe(const bool sanity_check/*=true*/) {
       #elif TOTAL_PROBING > 2
         probes_z_sum += z;
       #else
-        UNUSED(z);
+        MARLIN_UNUSED(z);
       #endif
 
       #if TOTAL_PROBING > 2

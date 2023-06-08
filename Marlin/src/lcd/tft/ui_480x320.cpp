@@ -719,7 +719,7 @@ static void moveAxis(const AxisEnum axis, const int8_t direction) {
     // Get the new position
     const bool limited = ui.manual_move.apply_diff(axis, diff, min, max);
     #if IS_KINEMATIC
-      UNUSED(limited);
+      MARLIN_UNUSED(limited);
     #else
       PGM_P const msg = limited ? GET_TEXT(MSG_LCD_SOFT_ENDSTOPS) : NUL_STR;
       drawMessage(msg);

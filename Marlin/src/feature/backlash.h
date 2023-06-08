@@ -55,7 +55,7 @@ private:
 
 public:
   static float get_measurement(const AxisEnum a) {
-    UNUSED(a);
+    MARLIN_UNUSED(a);
     // Return the measurement averaged over all readings
     return TERN(MEASURE_BACKLASH_WHEN_PROBING
       , measured_count[a] > 0 ? measured_mm[a] / measured_count[a] : 0
@@ -64,7 +64,7 @@ public:
   }
 
   static bool has_measurement(const AxisEnum a) {
-    UNUSED(a);
+    MARLIN_UNUSED(a);
     return TERN0(MEASURE_BACKLASH_WHEN_PROBING, measured_count[a] > 0);
   }
 
