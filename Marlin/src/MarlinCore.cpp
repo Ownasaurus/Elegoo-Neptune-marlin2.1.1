@@ -1645,12 +1645,12 @@ void setup() {
     SETUP_RUN(tft_lvgl_init());
   #endif
 
-  #if 0//ENABLED(MKS_WIFI_MODULE)
+  #if ENABLED(MKS_WIFI_MODULE)
     #if ENABLED(SDSUPPORT)
       if (!card.isMounted()) SETUP_RUN(card.mount()); // Mount SD for firmware update
     #endif
     SETUP_RUN(mks_esp_wifi_init());
-    SETUP_RUN(mks_wifi_firmware_update());
+    //SETUP_RUN(mks_wifi_firmware_update());
   #endif
 
   #if BOTH(HAS_WIRED_LCD, SHOW_BOOTSCREEN)
@@ -1726,7 +1726,7 @@ void loop() {
 
     TERN_(HAS_TFT_LVGL_UI, printer_state_polling());
 
-//    TERN_(MKS_WIFI_MODULE, wifi_looping());
+    TERN_(MKS_WIFI_MODULE, wifi_looping());
 
     TERN_(MARLIN_TEST_BUILD, runPeriodicTests());
 

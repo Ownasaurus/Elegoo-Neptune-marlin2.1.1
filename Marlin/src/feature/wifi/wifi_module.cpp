@@ -505,8 +505,8 @@ static bool longName2DosName(const char *longName, char *dosName) {
       __HAL_RCC_DMA1_CLK_ENABLE();
       wifiUsartDMArx.Instance = DMA1_Channel5;
     #else
-      __HAL_RCC_DMA2_CLK_ENABLE();
-      wifiUsartDMArx.Instance = DMA2_Stream2;
+      __HAL_RCC_DMA1_CLK_ENABLE();
+      wifiUsartDMArx.Instance = DMA1_Stream5;
       wifiUsartDMArx.Init.Channel = DMA_CHANNEL_4;
     #endif
     wifiUsartDMArx.Init.Direction = DMA_PERIPH_TO_MEMORY;
