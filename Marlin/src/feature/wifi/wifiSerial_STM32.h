@@ -53,6 +53,7 @@ class WifiSerial {
     void flush();
     bool isHalfDuplex() const;
     void enableHalfDuplexRx();
+    bool inited_yet;
 
   private:
     void setRx(uint32_t _rx);

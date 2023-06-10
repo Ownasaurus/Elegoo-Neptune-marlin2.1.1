@@ -49,6 +49,7 @@ void WifiSerial::init(PinName _rx, PinName _tx) {
   _serial.tx_buff = wifiTxBuf;
   _serial.tx_head = 0;
   _serial.tx_tail = 0;
+  inited_yet = 0;
 }
 
 WifiSerial::WifiSerial(void *peripheral) {
@@ -299,16 +300,19 @@ void WifiSerial::begin(unsigned long baud, byte config) {
     uart_attach_rx_callback(&_serial, _rx_complete_irq);
   else
     WIFI_USART->CR1 |= USART_CR1_RE;  // Preserve word length, etc. Use 'or' to preserve USART_CR1_M_8N1
+    inited_yet = 1;
 }
 
 void WifiSerial::end() {
-  // wait for transmission of outgoing data
-  flush();
+  if (inited_yet){
+    // wait for transmission of outgoing data
+    flush();
 
-  uart_deinit(&_serial);
+    uart_deinit(&_serial);
 
-  // clear any received data
-  _serial.rx_head = _serial.rx_tail;
+    // clear any received data
+    _serial.rx_head = _serial.rx_tail;
+  }
 }
 
 int WifiSerial::available() {
