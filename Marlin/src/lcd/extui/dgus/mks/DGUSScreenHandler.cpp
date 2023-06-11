@@ -1391,7 +1391,6 @@ void DGUSScreenHandlerMKS::FilamentUnLoad(DGUS_VP_Variable &var, void *val_ptr) 
 #endif // DGUS_FILAMENT_LOADUNLOAD
 
 bool DGUSScreenHandlerMKS::loop() {
-
   dgusdisplay.loop();
 
   const millis_t ms = millis();

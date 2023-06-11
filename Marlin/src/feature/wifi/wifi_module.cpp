@@ -501,14 +501,9 @@ static bool longName2DosName(const char *longName, char *dosName) {
   }
 
   static void wifi_usart_dma_init() {
-    #ifdef STM32F1xx
-      __HAL_RCC_DMA1_CLK_ENABLE();
-      wifiUsartDMArx.Instance = DMA1_Channel5;
-    #else
-      __HAL_RCC_DMA1_CLK_ENABLE();
-      wifiUsartDMArx.Instance = DMA1_Stream5;
-      wifiUsartDMArx.Init.Channel = DMA_CHANNEL_4;
-    #endif
+    __HAL_RCC_DMA1_CLK_ENABLE();
+    wifiUsartDMArx.Instance = DMA1_Stream5;
+    wifiUsartDMArx.Init.Channel = DMA_CHANNEL_4;
     wifiUsartDMArx.Init.Direction = DMA_PERIPH_TO_MEMORY;
     wifiUsartDMArx.Init.PeriphInc = DMA_PINC_DISABLE;
     wifiUsartDMArx.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;
