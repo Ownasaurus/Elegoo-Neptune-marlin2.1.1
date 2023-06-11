@@ -857,16 +857,18 @@ void idle(bool no_stepper_sleep/*=false*/) {
   // Handle SD Card insert / remove
   TERN_(SDSUPPORT, card.manage_media());
 
-
   // Handle USB Flash Drive insert / remove
   TERN_(USB_FLASH_DRIVE_SUPPORT, card.diskIODriver()->idle());
+
   // Announce Host Keepalive state (if any)
   TERN_(HOST_KEEPALIVE_FEATURE, gcode.host_keepalive());
+
   // Update the Print Job Timer state
   TERN_(PRINTCOUNTER, print_job_timer.tick());
 
   // Update the Beeper queue
   TERN_(HAS_BEEPER, buzzer.tick());
+
   // Handle UI input / draw events
   TERN(DWIN_CREALITY_LCD, DWIN_Update(), ui.update());
 
@@ -1650,7 +1652,7 @@ void setup() {
       if (!card.isMounted()) SETUP_RUN(card.mount()); // Mount SD for firmware update
     #endif
     SETUP_RUN(mks_esp_wifi_init());
-    //SETUP_RUN(mks_wifi_firmware_update());
+    SETUP_RUN(mks_wifi_firmware_update());
   #endif
 
   #if BOTH(HAS_WIRED_LCD, SHOW_BOOTSCREEN)
@@ -1685,10 +1687,6 @@ void setup() {
 
   SETUP_LOG("setup() completed.");
 
-  SERIAL_ECHO_MSG("Setup completed");
-  SERIAL_FLUSHTX();
-  delay(3000);
-
   TERN_(MARLIN_TEST_BUILD, runStartupTests());
 }
 
@@ -1706,8 +1704,6 @@ void setup() {
  *    as long as idle() or manage_inactivity() are being called.
  */
 void loop() {
-    SERIAL_ECHO_MSG("Loop Started");
-  SERIAL_FLUSHTX();
   do {
     idle();
 
