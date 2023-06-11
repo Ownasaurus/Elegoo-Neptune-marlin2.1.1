@@ -60,7 +60,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(none, default config)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Owna, perrsonal settings)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -93,8 +93,8 @@
 #ifndef MOTHERBOARD
   #define MOTHERBOARD BOARD_MKS_E3D_V2
   #if ENABLED(RTS_AVAILABLE)
-    //#define NEPTUNE_3_PRO      1
-    #define NEPTUNE_3_PLUS   1
+    #define NEPTUNE_3_PRO      1
+    //#define NEPTUNE_3_PLUS   1
     //#define NEPTUNE_3_MAX    1
     #endif
 #endif
@@ -666,9 +666,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp   22.2
-    #define DEFAULT_Ki   1.80
-    #define DEFAULT_Kd  119.00
+    #define DEFAULT_Kp   28.78
+    #define DEFAULT_Ki   2.90
+    #define DEFAULT_Kd   71.38
   #endif
 #endif
 
@@ -1170,7 +1170,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 #if NEPTUNE_3_PRO
-  #define DEFAULT_AXIS_STEPS_PER_UNIT   {80.00, 80.00, 400.00, 380.00}
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   {80.00, 80.00, 400.00, 415.39}
 #elif NEPTUNE_3_PLUS
   #define DEFAULT_AXIS_STEPS_PER_UNIT   {80.00, 80.00, 400.00, 390.00}
 #elif NEPTUNE_3_MAX
